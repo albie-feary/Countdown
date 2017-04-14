@@ -2,6 +2,23 @@
 var secondsRemaining;
 var intervalHandle;
 
+function tick(){
+  // grab hold of the h1 by creating a var called timeDisplay
+  var timeDisplay = document.getElementbyId("time");
+  // then turn the seconds that are in the secondsRemaining var into minutes and seconds.
+  // math.floor makes a number a basic integer, just ignore any remainder.
+  var min = Math.floor(secondsRemaining / 60);
+  var sec = secondsRemaining - (* 60);
+  // if seconds are less than 10, then add a leading zero as a string value
+  if (sec<10) {
+    sec = "0" + sec;
+    // take min and seconds value and concatenate using colon
+    var message = min + ":" + sec;
+    // and finally we change what the page actually displays
+    timeDisplay.innerHTML = message;
+
+  }
+};
 
 
 function startCountdown(){
