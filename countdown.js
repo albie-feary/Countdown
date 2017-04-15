@@ -15,7 +15,7 @@ function tick(){
   var min = Math.floor(secondsRemaining / 60);
   var sec = secondsRemaining - (min * 60);
   // if seconds are less than 10, then add a leading zero as a string value
-  if (sec<10) {
+  if (sec < 10) {
     sec = "0" + sec;
   }
   // take min and seconds value and concatenate using colon
