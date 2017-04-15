@@ -4,12 +4,12 @@ var intervalHandle;
 
 // reset page function to reset the countdown again.
 function resetPage() {
-  document.getElementbyId("inputArea").stlye.display ="block";
+  document.getElementById("inputArea").stlye.display ="block";
 }
 
-function tick(){
+function tick() {
   // grab hold of the h1 by creating a var called timeDisplay
-  var timeDisplay = document.getElementbyId("time");
+   var timeDisplay = document.getElementById("time");
   // then turn the seconds that are in the secondsRemaining var into minutes and seconds.
   // math.floor makes a number a basic integer, just ignore any remainder.
   var min = Math.floor(secondsRemaining / 60);
@@ -24,7 +24,7 @@ function tick(){
     timeDisplay.innerHTML = message;
     // Did the seconds make it down to zero?
     if (secondsRemaining === 0) {
-      alert("Done!");
+      alert("End!");
       clearInterval(intervalHandle);
       resetpage();
 
@@ -36,8 +36,8 @@ function tick(){
 
 function startCountdown(){
   // get the contents of the "minutes" text box which we are using the .value propert of.
-  var minutes = document.getElementbyId("minutes").value;
-  // check if it is not a number using isNaN
+  var minutes = document.getElementById("minutes").value;
+  // check if it is not a number using isNaN, error checking.
 if (isNaN(minutes)){
   alert("Please enter a number!");
   return;
@@ -46,18 +46,16 @@ if (isNaN(minutes)){
 // however if it is a number that has been entered then move past the if statement and find out how many seconds are remaining.
 // how many seconds?
 secondsRemaining = minutes * 60;
-// every second(1000milliseconds), call the tick function
+// every second(1000milliseconds), call the tick function. create an interval to repeatedly call functions every second.
 intervalHandle = setInterval(tick, 1000);
 // hide the form when the clock is ticking
-document.getElementbyId("inputArea").style.display="none";
+document.getElementById("inputArea").style.display="none";
 };
 
 
-
-
-// as soon as page loads,load this code and what we are doing here is creating some new elements
+// as soon as page loads,load this code and what we are doing here is creating some new elements. Using the window.onload event
 window.onload = function() {
-  // create an input text box and give it an id of "minutes
+  // create an input text box and give it an id of "minutes" (creating DOM elements, creating the page content dynamically through JS.)
     var inputMinutes = document.createElement("input");
   inputMinutes.setAttribute("id", "minutes");
   inputMinutes.setAttribute("type", "text");
